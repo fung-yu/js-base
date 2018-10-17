@@ -38,18 +38,19 @@ var divList = tabBox.getElementsByTagName('div')
 // }
 
 
-function changeTabHandle(n) {
-    for(var i=0; i<tabList.length; i++){
-        tabList[i].className = '';
-        divList[i].className = '';
-    }
-    tabList[n].className = 'active';
-    divList[n].className = 'active'; 
-}
+// function changeTabHandle(n) {
+//     for(var i=0; i<tabList.length; i++){
+//         tabList[i].className = '';
+//         divList[i].className = '';
+//     }
+//     tabList[n].className = 'active';
+//     divList[n].className = 'active'; 
+// }
 
 // 不清空所有的className,而是清空上次的
 //属性标记
-beforeIndex = 0;
+// beforeIndex = 0;
+
 // for(var i=0; i<tabList.length; i++){
 //     tabList[i]._f_index = i;
 //     tabList[i].onclick = function() {
@@ -62,12 +63,24 @@ beforeIndex = 0;
 //     }
 // }
 
-for(let i=0; i<tabList.length; i++){
-    tabList[i].onclick = function (params) {
-        tabList[beforeIndex].className = '';
-        divList[beforeIndex].className = '';
-        tabList[i].className = 'active';
-        divList[i].className = 'active';
-        beforeIndex = i;
-    }
+// for(let i=0; i<tabList.length; i++){
+//     tabList[i].onclick = function (params) {
+//         tabList[beforeIndex].className = '';
+//         divList[beforeIndex].className = '';
+//         tabList[i].className = 'active';
+//         divList[i].className = 'active';
+//         beforeIndex = i;
+//     }
+// }
+
+
+for (var index = 0; index < tabList.length; index++) {
+    tabList[index].myIndex = index;
+    tabList[index].onmouseover = function(params) {
+        for(var j = 0; j < tabList.length; j++){
+            tabList[j].className = divList[j].className = '';
+        }
+        this.className = 'active';
+        divList[this.myIndex].className = 'active';
+    }; 
 }

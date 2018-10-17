@@ -1,0 +1,50 @@
+.box{
+    margin: 20px auto;
+    width: 500px;
+    height: 300px;
+}
+
+ul.box li{
+    border-bottom: dashed 1px #AAA;
+    height: 50px;
+    line-height: 50px;
+    /* ... */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;  
+}
+/* 隔行变色 */
+/* ul li:nth-of-type(odd){
+    color: aqua;
+}
+ul li:nth-of-type(even){
+    color: red;
+} */
+
+/* 隔三行变色 */
+/* .box li:nth-of-type(3n+1){
+    color: red;
+}
+.box li:nth-of-type(3n+2){
+    color: purple;
+}
+.box li:nth-of-type(3n){
+    color: yellow;
+} */
+
+.bg0 {
+    color: yellow;
+    background-color: lawngreen;
+}
+.bg1{
+    color: violet;
+}
+.bg2{
+    color: tomato;
+}
+#hover{
+    background-color: lawngreen;
+}
+li.hover{
+    background-color: black;
+}
