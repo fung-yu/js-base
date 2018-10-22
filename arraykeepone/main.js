@@ -75,6 +75,6 @@ var arrayObj = {};
 _array = _array.filter(function(item, index, _array) {
     return _array.indexOf(item, 0) === index;
 });
-console.log(_array);
+console.log(_array); 
 
 
