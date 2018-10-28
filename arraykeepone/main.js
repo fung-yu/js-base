@@ -72,9 +72,58 @@ var arrayObj = {};
 // console.log(newArray);
 
 // 方案九：filter
-_array = _array.filter(function(item, index, _array) {
-    return _array.indexOf(item, 0) === index;
-});
-console.log(_array); 
+// _array = _array.filter(function(item, index, _array) {
+//     return _array.indexOf(item, 0) === index;
+// });
+// console.log(_array); 
 
+//利用对象属性的唯一性实现
+// function distinct(array) {
+//     var obj = {};
+//     for (let i = 0; i < array.length; i++) {
+//         const item = array[i];
+//         if(typeof obj[item] != 'undefined'){
+//             /*发明已经出现
+//             *让数组的最后一项放置在要删除的这个位置
+//             *然后删除最后一项
+//             *抵消i的i++
+//             */
+//             array[i] = array[array.length-1];
+//             array.length--;
+//             i--;
+//             continue;
+//         }
+//         obj[item] = item;
+//     }
+//     obj = null;//内存销毁
+//     return array;
+// }
+// console.log(_array);
 
+/*
+*把数组去重的方法写在内置类的prototype上，成为公共的方法
+*/
+Array.prototype.myDistinct = function myDistinct() {
+    //this是指array当前要处理的那个数组。
+    var obj = {};
+    for (let i = 0; i < this.length; i++) {
+        const item = this[i];
+        if (typeof obj[item] != 'undefined') {
+            /*发明已经出现
+            *让数组的最后一项放置在要删除的这个位置
+            *然后删除最后一项
+            *抵消i的i++
+            */
+            this[i] = this[this.length - 1];
+            this.length--;
+            i--;
+            continue;
+        }
+        obj[item] = item;
+    }
+    obj = null;//内存销毁
+    return this;//可以实现链式调用
+}
+
+_array.myDistinct();//因为是这么调用的，所以在distinct方法内部的this就是_array
+console.log(_array);
