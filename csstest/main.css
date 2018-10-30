@@ -1,0 +1,58 @@
+/* 实现内部div,box2水平居中和垂直居中 */
+/* 方法一  表格方法  但是要求它的内容是行内元素才行*/
+
+.table{
+
+    width: 100%;
+    height: 200px;
+    background-color: aqua;
+    text-align: center;
+}
+.box2{
+    background-color: red;
+    display: inline-block;
+}
+
+/* 方法二 利用display:table */
+.wrap{
+    display: table-cell;
+    width: 500px;
+    height: 200px;
+    text-align: center;
+    vertical-align: middle;
+    background-color: rebeccapurple;
+}
+
+/* 方法三 vertical-align: middle; 利用没有宽度的b标签实现水平和垂直居中*/
+.wrap3{
+    width: 400px;
+    height: 200px;
+    text-align: center;
+    background-color: black;
+}
+.vamb{
+    display: inline-block;
+    width: 0px;
+    height: 100%;
+    vertical-align: middle;
+}
+.box3{
+    background-color: red;
+    display: inline-block;
+}
+
+/* 方法四：利用盒模型来实现 */
+.wrap4{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: blue;
+    height: 200px;
+}
+.box4{
+    background-color: aliceblue;
+}
+
+
+
+
