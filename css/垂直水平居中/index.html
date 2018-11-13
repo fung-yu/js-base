@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>实现内部div的水平垂直居中</title>
+    <style type="text/css" >
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        /* 第一种方式  flex布局*/
+        /* .parent{
+            display: flex;
+            width: 100%;
+            height: 500px;
+            background-color: blue;
+            justify-content: center;
+            align-items: center;
+        }
+        .child{
+            width: 200px;
+            height: 200px;
+            background-color: antiquewhite;
+        } */
+        /* 第二种方式  相对定位 */
+        /* .parent{
+            width: 100%;
+            height: 500px;
+            background-color: blue;
+            position: relative;
+        }
+        .child{
+            width: 200px;
+            height: 200px;
+            background-color: antiquewhite;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin: -100px 0 0 -100px;
+        } */
+
+        /* 第三种方式  最土方法 */
+        /* .parent{
+            width: 200px;
+            height: 200px;
+            background-color: darkcyan;
+            margin: auto; 
+            padding: 150px;
+        }
+        .child{
+            width: 200px;
+            height: 200px;
+            background-color: #d4fd61;
+        } */
+
+        /* 第四种方式  宽度可以设置为100%，外层设置 overflow: hidden*/
+        /* .parent{
+            width: 100%;
+            height: 500px;
+            background-color: blue;
+            overflow: hidden;
+        }
+        .child{
+            width: 200px;
+            height: 200px;
+            background-color: antiquewhite;
+            margin: 150px auto;
+        } */
+
+        /* 第五种  利用table  外层div的宽度不能设置为100%*/
+       .parent{
+           width: 500px;
+           height:500px;
+           background-color: darkcyan;
+           text-align: center;
+           display: table-cell;
+           vertical-align: middle;
+        }
+       .child{
+           width: 200px;
+           height: 200px;
+           background-color: #d4fd61;
+           display: inline-block;
+        }
+        
+
+        
+        
+    </style>
+</head>
+<body>
+    <div class="parent">
+        <div class="child"></div>
+    </div>
+</body>
+</html>
