@@ -3,7 +3,7 @@
  * 
  */
 var iframe = document.getElementById('iframe');
-console.log('获取iframewindow iframeElement.contentWindow', getIframeWindow(iframe));
+// console.log('获取iframewindow iframeElement.contentWindow', getIframeWindow(iframe));
 console.log('在父页面获取iframe的document element.contentDocument', getIframeDocument(iframe));
 
 
@@ -27,6 +27,7 @@ function getIframeWindow(iframeElement) {
  * 备注：ie没有iframeElement.contentDocument属性。
  */
 function getIframeDocument(element) {
+    console.dir(element);
     return element.contentDocument || element.contentWindow.document;
 };
 
@@ -69,3 +70,33 @@ function iframeOnload() {
     }
     document.body.appendChild(iframe);
 }
+
+
+//调整iframe的高度
+
+
+function setFrameHeight() {
+    var iframe = document.getElementById('iframe');
+    
+    var iframeDoc = getIframeDocument(iframe);
+    console.log(iframeDoc);
+    // var childHeight = iframeDoc.childNodes[1].offsetHeight;
+    // iframe.height = childHeight;
+}
+
+if (iframe.attachEvent) {
+    iframe.attachEvent("onload", function () {
+        // alert("Local iframe is now loaded in IE.");
+        setFrameHeight();
+    });
+} else {
+    iframe.onload = function () {
+        // alert("Local iframe is now loaded in not IE.");
+        // setFrameHeight();
+        var iframe = document.getElementById('iframe');
+        var iframeDoc = getIframeDocument(iframe);
+        // console.log(iframeDoc);
+    };
+}
+
+

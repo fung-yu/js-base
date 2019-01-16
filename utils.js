@@ -14,11 +14,19 @@ var utils = (function () {
         return ary;
     }
     //解决JSON.parse在IE6~7中不兼容的问题
-    function toJSON(str){
-        'JSON' in window ? JSON.parse(str):eval('('+str+')')
+    function toJSON(str) {
+        'JSON' in window ? JSON.parse(str) : eval('(' + str + ')')
+    }
+    //比较两个数字是否相等
+    function numbersCloseEnoughToEqual(n1, n2) {
+        if (!Number.EPSILON) {
+            Number.EPSILON = Math.pow(2, -52);
+        }
+        return Math.abs(n1 - n2) < Number.EPSILON;
     }
     return {
         toArray: toArray,
-        toJSON:  toJSON
+        toJSON: toJSON,
+        numbersCloseEnoughToEqual: numbersCloseEnoughToEqual
     }
 })()
