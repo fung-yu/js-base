@@ -1,0 +1,46 @@
+.newsBox{
+  margin: 0 10px;
+}
+.newsBox li{
+  border-bottom: 1px solid #e4e4e4;
+}
+.newsBox li:nth-last-child(1) {
+  border: none;
+}
+.newsBox li a{
+  position: relative;
+  display: block;
+  padding: 10px 0;
+}
+.imgBox{
+  position: absolute;
+  width: 84px;
+  height: 56px;
+  background: url('../img-lazy-load.png') no-repeat center center #EEE;
+  background-size: 25px;
+}
+.imgBox img{
+  display: none;
+  width: 100%;
+  height: 100%;
+}
+.content{
+  margin-left: 94px;
+}
+.content p{
+  line-height: 20px;
+  font-size: 14px;
+  color: #555555;
+  height: 40px;
+  overflow: hidden;
+}
+.content span{
+  display: block;
+  line-height: 20px;
+  font-size: 12px;
+  color: #999999;
+  background: url('../comment.png') no-repeat left center;
+  background-size: 13px 15px;
+  text-indent: 15px;
+}
+
