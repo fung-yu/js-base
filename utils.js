@@ -114,7 +114,10 @@ var utils = (function () {
             leftX += parent.offsetLeft;
             parent = parent.offsetParent;
         }
-        return { X: leftX, Y: topY };
+        return {
+            X: leftX,
+            Y: topY
+        };
     }
 
     var boxModal = function (attr, value) {
@@ -126,12 +129,35 @@ var utils = (function () {
         return document.documentElement[attr] || document.body[attr];
     }
 
+    /**
+     * 我们可以获取指定元素的所有“元素子节点”，并且我们还可以指定标签名。
+     * 例如我们指定标签名是span
+     */
+    var children = function (curEle, tagName) {
+        var result = [];
+        var childList = curEle.childNodes;
+        for (var i = 0; i < childList.length; i++) {
+            var item = childList[i];
+            if (item.nodeType === 1) {
+                if (typeof tagName !== 'undefined') {
+                    if (item.tagName.toLowerCase() === tagName.toLowerCase()) {
+                        result.push(item);
+                    }
+                    continue;
+                }
+                result.push(item);
+            }
+        }
+        return result;
+    }
+
     return {
         toArray: toArray,
         toJSON: toJSON,
         numbersCloseEnoughToEqual: numbersCloseEnoughToEqual,
         css: css,
         offset: offset,
-        boxModal: boxModal
+        boxModal: boxModal,
+        children: children
     }
 })()

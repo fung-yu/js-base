@@ -1,0 +1,6 @@
+img-lazy-load  内有单张图片懒加载实例和多图片懒加载实例
+
+children       自带的children方法，在IE6~8中，浏览器会把注释节点当作元素节点处理，
+               封装children函数可以获取当前元素的所有元素子节点(不包含元素子节点)
+
+className      封装一个className函数，实现可以通过className获取元素

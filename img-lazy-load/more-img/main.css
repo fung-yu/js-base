@@ -16,8 +16,8 @@
   position: absolute;
   width: 84px;
   height: 56px;
-  background: url('../img-lazy-load.png') no-repeat center center #EEE;
-  background-size: 25px;
+  background: url('../default.png') no-repeat center center #EEE;
+  background-size: 84px 56px;
 }
 .imgBox img{
   display: none;
