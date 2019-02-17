@@ -4,3 +4,9 @@ children       自带的children方法，在IE6~8中，浏览器会把注释节�
                封装children函数可以获取当前元素的所有元素子节点(不包含元素子节点)
 
 className      封装一个className函数，实现可以通过className获取元素
+
+tab插件:tab/tabplugin-1.js
+  插件：轮廓图scroll  tab插件，只写相应的JS文件即可，不需要写html文件
+  组件：bootstrap   需要有自己的html + css + JS
+  类库：jQuery    可以使用这些类库实现我们的需求
+  框架：  有自己的思想，比如react  vue

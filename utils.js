@@ -1,11 +1,13 @@
 // 高级单例模式
 var utils = (function () {
+    var isCompatible = 'getElementsByClassName' in document,
+        isSupportJSON = 'JSON' in window;
     // 解决所有类数组转化为数组（兼容所有浏览器）
     var toArray = function (likeAry) {
         var ary = [];
-        try {
-            ary = Array.prototype.slice.call(likeAry)
-        } catch (e) {
+        if(isCompatible){
+            ary = Array.prototype.slice.call(likeAry);
+        }else{
             for (var i = 0; i < likeAry.length; i++) {
                 var cur = likeAry[i];
                 ary.push(cur);
@@ -15,7 +17,7 @@ var utils = (function () {
     }
     //解决JSON.parse在IE6~7中不兼容的问题
     var toJSON = function (str) {
-        'JSON' in window ? JSON.parse(str) : eval('(' + str + ')')
+       return isSupportJSON ? JSON.parse(str) : eval('(' + str + ')')
     }
     //比较两个数字是否相等
     var numbersCloseEnoughToEqual = function (n1, n2) {
@@ -151,6 +153,34 @@ var utils = (function () {
         return result;
     }
 
+    var getElementsByClassName = function (strClass, context) {
+        context = context || document;
+        /**
+         * 如果不是IE6~8则直接执行下面的语句
+         */
+        if (isCompatible) {
+            return utils.toArray(context.getElementsByClassName(strClass));
+        }
+        var result = [],
+            nodeList = context.getElementsByTagName('*');
+        strClass = strClass.replace(/^ +| +$/g, '').split(/ +/);
+        for (var i = 0; i < nodeList.length; i++) {
+            var item = nodeList[i],
+                itemClass = item.className,
+                flag = true; //先假设strClass在当前节点中
+            for (var k = 0; k < strClass.length; k++) {
+                var element = strClass[k],
+                    reg = new RegExp('(^| +)' + element + '( +|$)');
+                if (!reg.test(itemClass)) {
+                    flag = false;
+                    break;
+                }
+            }
+            flag ? result.push(item) : null;
+        }
+        return result;
+    }
+
     return {
         toArray: toArray,
         toJSON: toJSON,
@@ -158,6 +188,7 @@ var utils = (function () {
         css: css,
         offset: offset,
         boxModal: boxModal,
-        children: children
+        children: children,
+        getElementsByClassName: getElementsByClassName
     }
 })()
