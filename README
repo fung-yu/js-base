@@ -10,3 +10,26 @@ tab插件:tab/tabplugin-1.js
   组件：bootstrap   需要有自己的html + css + JS
   类库：jQuery    可以使用这些类库实现我们的需求
   框架：  有自己的思想，比如react  vue
+
+
+timeout JS定时器 
+
+timeout/main.js
+    包括 setTimeout/setInterval 两种定时器
+    setTimeout 只执行一次
+    setInterval 间隔时间内重复执行
+
+    定时器的返回值：当我们设置定时器（不管是setTimeout还是setInterval），都会有一个返回值，返回值是一个数字，代表当前是在浏览器中设置的第几个定时器（返回的是定时器序号）
+    1. setTimeout/setInterval虽然是处理不同需求的定时器，但是都是浏览器的定时器，所以设置的时候，返回的序号是依次排列的。
+    2. setInterval设置定时器会有一个返回值，不管执行多少次，这个代表序号的返回值不变（设置定时器就有返回值，执行多少次是定时器的处理）
+
+    定时器的清除 clearTimeout/clearInterval
+
+timeout/async.js  JS中的同步编程和异步编程
+timeout/application1.js  同步异步编程应用一
+timeout/application2.js  同步异步编程应用二
+timeout/move.js  固定步长和固定时间的匀速运动动画
+
+
+
+

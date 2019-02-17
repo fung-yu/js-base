@@ -62,9 +62,25 @@ var moreImgRender = (function () {
     tempImg.onload = function () {
       curImg.src = this.src;
       curImg.style.display = 'block';
+      imagFade(curImg);
       tempImg = null;
     }
     tempImg.src = curImg.getAttribute('data-img');
+  }
+
+  //imagFade 让当前图片渐现出来
+  function imagFade(curImg) {
+    var n = 0;
+    var timer = setInterval(function () {
+      if (n > 1) {
+        clearInterval(timer);
+        timer = null;
+        return;
+      }
+      n += 0.05;
+      utils.css(curImg, 'opacity', n);
+
+    }, 17); //17MS是执行定时器动画相对比较理想的间隔时间
   }
 
   return {
