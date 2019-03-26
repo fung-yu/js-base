@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+
+</head>
+
+<body>
+    <iframe src="./child1.html" id="iframe"></iframe>
+    <script>
+        var elementFrame = document.getElementById('iframe');
+        if (elementFrame.contentDocument) {
+            element = elementFrame.contentDocument;
+        } else if (element.contentWindow) {
+            element = elementFrame.contentWindow.document;
+        }
+
+        console.log("Element **********" + element);
+    </script>
+</body>
+
+</html>

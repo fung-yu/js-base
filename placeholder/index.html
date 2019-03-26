@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Placeholder</title>
+    <style>
+    html,
+    body {
+        margin: 0;
+        padding: 0;
+        color: #252525;
+    }
+
+    .wrap {
+        width: 320px;
+        margin: 20px auto 0;
+    }
+
+    .tl {
+        width: 110px;
+        float: left;
+        text-align: right;
+        line-height: 34px;
+    }
+
+    input {
+        width: 200px;
+        height: 24px;
+        padding: 4px;
+        line-height: 24px;
+        border: 1px solid #d7d7d7;
+    }
+
+    textarea {
+        width: 200px;
+        height: 100px;
+        padding: 4px;
+        border: 1px solid #d7d7d7;
+        resize: none;
+    }
+
+    .placeholder {
+        color: #bababa;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="tl">input文本框：</div>
+        <input type="text" placeholder="用户">
+    </div>
+    <div class="wrap">
+        <div class="tl">input密码框：</div>
+        <input type="password" placeholder="密码">
+    </div>
+    <div class="wrap">
+        <div class="tl">textarea：</div>
+        <textarea placeholder="textarea文本框"></textarea>
+    </div>
+    <script src="jquery-1.12.4.min.js"></script>
+    <script src="placeholder.js"></script>
+</body>
+
+</html>

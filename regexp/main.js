@@ -80,6 +80,7 @@
         template.replace(/\{(\d+)\}/g, function () {
             var value = ary[arguments[1]] || '0';
             value.length < 2 ? value = '0' + value : null;
+            
             return value;
         });
         return template;

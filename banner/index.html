@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="../reset.min.css">
+    <link rel="stylesheet" href="./banner.css">
+    <!-- 开发环境 -->
+    <!-- <link rel="stylesheet/less" href="./banner.less"> -->
+    <!-- <script src="../less-2.5.3.min.js"></script> -->
+</head>
+<body>
+    <div class="container" id="container">
+            <!-- wrapper控制轮播图切换 -->
+        <ul class="wrapper">
+            <li class="slide">
+                <img src="" data-img="./banner.png" alt="">
+            </li>
+        </ul>
+        <!-- 控制焦点 -->
+        <ul class="focusBox clearfix">
+            <li class="select"></li>
+            <li></li>
+            <li></li>
+            <li class="last"></li>
+        </ul>
+        <!-- 控制左右切换箭头 只有a的hover兼容所有浏览器，而且鼠标滑过是小手，项目中一般用a标签当按钮-->
+        <a href="javascript:;" class="arrow arrowLeft"></a>
+        <a href="javascript:;" class="arrow arrowRight"></a>
+    </div>
+</body>
+</html>

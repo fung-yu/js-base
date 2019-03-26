@@ -14,6 +14,7 @@ console.log('在父页面获取iframe的document element.contentDocument', getIf
  * firefox： iframeElement.contentWindow 
  * ie6：iframeElement.contentWindow
  */
+
 function getIframeWindow(iframeElement) {
     return iframeElement.contentWindow;
     //   return iframeElement.contentWindow || iframeElement.contentDocument.parentWindow;
@@ -26,6 +27,7 @@ function getIframeWindow(iframeElement) {
  * ie：element.contentWindow.document
  * 备注：ie没有iframeElement.contentDocument属性。
  */
+
 function getIframeDocument(element) {
     console.dir(element);
     return element.contentDocument || element.contentWindow.document;
@@ -80,8 +82,8 @@ function setFrameHeight() {
     
     var iframeDoc = getIframeDocument(iframe);
     console.log(iframeDoc);
-    // var childHeight = iframeDoc.childNodes[1].offsetHeight;
-    // iframe.height = childHeight;
+    var childHeight = iframeDoc.childNodes[1].offsetHeight;
+    iframe.height = childHeight;
 }
 
 if (iframe.attachEvent) {
@@ -91,10 +93,10 @@ if (iframe.attachEvent) {
     });
 } else {
     iframe.onload = function () {
-        // alert("Local iframe is now loaded in not IE.");
-        // setFrameHeight();
-        var iframe = document.getElementById('iframe');
-        var iframeDoc = getIframeDocument(iframe);
+        alert("Local iframe is now loaded in not IE.");
+        setFrameHeight();
+        // var iframe = document.getElementById('iframe');
+        // var iframeDoc = getIframeDocument(iframe);
         // console.log(iframeDoc);
     };
 }
