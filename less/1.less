@@ -1,0 +1,39 @@
+.transition(@property:all,@duration:1s,@timing-function:linear,@delay:0s){
+  transition: @arguments;
+  -webkit-transition: @arguments;
+  -moz-transition: @arguments;
+  -ms-transition: @arguments;
+  -o-transition: @arguments;
+}
+
+.transformRotate(@rotate:360deg){
+  transform: rotate(@rotate);
+  -webkit-transform: rotate(@rotate);
+  -moz-transform: rotate(@rotate);
+  -ms-transform: rotate(@rotate);
+  -o-transform: rotate(@rotate);
+}
+.outer{
+  margin: 50px;
+  width: 200px;
+  height: 200px;
+  border: 1px solid green;
+
+  @shadowColor:#000;
+  .inner{
+    margin: 20px;
+    width: 100px;
+    height: 100px;
+    background: lightblue;
+    box-shadow: 0 0 10px 0 @shadowColor;
+    .transition(@duration: .5s);
+ 
+  }
+/*.outer:hover 连字符*/
+  &:hover{
+    .inner{
+      box-shadow: 0 0 10px 0 lighten(@shadowColor,30%);
+      .transformRotate()
+    }
+  }
+}

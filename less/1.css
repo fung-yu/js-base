@@ -1,0 +1,28 @@
+.outer{
+  margin: 50px;
+  width: 200px;
+  height: 200px;
+  border: 1px solid green;
+}
+
+.outer .inner{
+  margin: 20px;
+  width: 100px;
+  height: 100px;
+  background: lightblue;
+  box-shadow: 0 0 10px 0 #000;
+  transition: .5s;
+  -webkit-transition: .5s;
+  -moz-transition: .5s;
+  -ms-transition: .5s;
+  -o-transition: .5s;
+}
+
+.outer:hover .inner{
+  box-shadow: 0 0 10px 0 #999;
+  transform: rotate(360deg);
+  -webkit-transform: rotate(360deg);
+  -moz-transform: rotate(360deg);
+  -ms-transform: rotate(360deg);
+  -o-transform: rotate(360deg);
+}

@@ -71,7 +71,7 @@
     opacity: 0.3;
     filter: alpha(opacity=30);
 }
-a:hover{
+a.arrow:hover{
     opacity: 1;
     filter: alpha(opacity=100);
 }
