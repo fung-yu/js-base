@@ -62,7 +62,7 @@
             dialogModal.id = 'dialogModal';
             this._default.outerWin.body.appendChild(dialogModal);
 
-            this._default.iShow ? this.show() : this.hide();
+            // this._default.iShow ? this.show() : this.hide();
 
             var str = '';
             if (this._default.isTitleShow) {
@@ -76,7 +76,7 @@
                 '</div>';
             if (this._default.isOkShow || this._default.isCancelShow) {
                 var footerClass = this._default.isOkShow && this._default.isCancelShow ? 'two-btn' : '';
-                str += '<div class="footer ' + footerClass + '">';
+                str += '<div class="dialog-footer ' + footerClass + '">';
                 if (this._default.isCancelShow) {
                     str += '<a href="javascript:;" class="btn cancel" id="cancel">取消</a>';
                 }
@@ -85,21 +85,27 @@
                 }
                 str += '</div>';
             }
-            document.getElementById('dialogModal').innerHTML = str;
+            this._default.outerWin.getElementById('dialogModal').innerHTML = str;
         },
 
         cancel: function () {
             var _this = this;
-            document.getElementById('cancel').onclick = _this._default.cancelCallBack;
+            this._default.outerWin.getElementById('cancel').onclick = function(){
+                _this._default.cancelCallBack();
+                _this.hide();
+            }
         },
 
         ok: function () {
             var _this = this;
-            document.getElementById('ok').onclick = _this._default.okCallBack;
+            this._default.outerWin.getElementById('ok').onclick = function(){
+                _this._default.okCallBack();
+                _this.hide();
+            }
         },
         close: function () {
             var _this = this;
-            document.getElementById('close').onclick = _this.hide;
+            this._default.outerWin.getElementById('close').onclick = _this.hide;
         },
 
         /**
@@ -110,14 +116,14 @@
          * 
          */
         hide: function () {
-            document.getElementById('dialogMask').style.display = 'none';
-            document.getElementById('dialogModal').style.display = 'none';
+            this._default.outerWin.getElementById('dialogMask').style.display = 'none';
+            this._default.outerWin.getElementById('dialogModal').style.display = 'none';
             this._default.outerWin.body.style.overflow = 'auto';
         },
 
         show: function () {
-            document.getElementById('dialogMask').style.display = 'block';
-            document.getElementById('dialogModal').style.display = 'block';
+            this._default.outerWin.getElementById('dialogMask').style.display = 'block';
+            this._default.outerWin.getElementById('dialogModal').style.display = 'block';
             this._default.outerWin.body.style.overflow = 'hidden';
         },
 
@@ -142,11 +148,3 @@
 
     window.DialogPlugin = DialogPlugin;
 })()
-
-document.getElementById('login').onclick = function () {
-    new DialogPlugin({
-        isTitleShow: false,
-        isCancelShow: false,
-        content: '删除成功!'
-    });
-}

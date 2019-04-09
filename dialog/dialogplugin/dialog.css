@@ -49,7 +49,7 @@
 .dialog-modal .content p {
   margin-top: 10px;
 }
-.dialog-modal .footer {
+.dialog-modal .dialog-footer {
   position: absolute;
   bottom: 25px;
   left: 50%;
@@ -57,13 +57,13 @@
   text-align: center;
   font-size: 14px;
 }
-.dialog-modal .footer.two-btn {
+.dialog-modal .dialog-footer.two-btn {
   margin-left: -115px;
 }
-.dialog-modal .footer.two-btn .ok {
+.dialog-modal .dialog-footer.two-btn .ok {
   margin-left: 50px;
 }
-.dialog-modal .footer a {
+.dialog-modal .dialog-footer a {
   display: inline-block;
   width: 88px;
   height: 33px;
@@ -71,6 +71,6 @@
   background-color: #5286de;
   color: #fff;
 }
-.dialog-modal .footer a:hover {
+.dialog-modal .dialog-footer a:hover {
   background-color: #5286df;
 }
