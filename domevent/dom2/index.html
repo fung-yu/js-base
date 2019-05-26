@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <button id="test">测试点击</button>
+  <script src="./jianrong-1.js"></script>
+  <script>
+    var testNode = document.getElementById('test');
+    var fn1 = function (e) {
+      console.log(1);
+    }
+    var fn2 = function (e) {
+      console.log(2);
+    }
+    var fn3 = function (e) {
+      console.log(3);
+    }
+    var fn4 = function (e) {
+      console.log(4);
+      off(testNode, 'click', fn1);
+      off(testNode, 'click', fn2);
+    }
+
+    on(testNode, 'click', fn1);
+    on(testNode, 'click', fn2);
+    on(testNode, 'click', fn3);
+    on(testNode, 'click', fn4);
+
+  </script>
+
+</body>
+
+</html>
