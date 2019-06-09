@@ -1,3 +1,16 @@
+Function.prototype.myBind = function myBind(context) {
+
+  context = context || window;
+  var _this = this,
+    outerArg = Array.prototype.slice.call(arguments, 1);
+  return function () {
+    var innerArg = Array.prototype.slice.call(arguments);
+    outerArg = outerArg.concat(innerArg);
+    _this.apply(context, outerArg);
+  }
+}
+
+
 /**
  * on: 基于DOM2实现事件绑定（兼容所有浏览器）
  * off: 移除当前元素某个事件绑定的某个方法
@@ -24,9 +37,11 @@ var on = function (curEle, type, fn) {
     curEle[type + 'Pond'] = [];
     //只要执行on就说明当前元素的这个事件行为将要被触发，我们需要绑定方法，此时我们应该把run方法先放在内置的事件池中，
     //当行为触发时，先执行run方法，在run方法中在把我们自定义事件池中的方法执行
-    curEle.attachEvent('on' + type, function (e) {
-      run.call(curEle, e);
-    });//把run方法放在内置事件池中，且只需要存放一次，所以代码写在这里。
+    // curEle.attachEvent('on' + type, function (e) {
+    //   run.call(curEle, e);
+    // });//把run方法放在内置事件池中，且只需要存放一次，所以代码写在这里。
+    curEle.attachEvent('on' + type, run.myBind(curEle));
+
   }
   var ary = curEle[type + 'Pond'];
   //去重操作：增加之前首先看下当前自定义事件池中是否有这个方法，有责不增加
@@ -78,7 +93,7 @@ var run = function (e) {
   if (!ary) return;
   for (var i = 0; i < ary.length; i++) {
     var item = ary[i];
-    if(item === null){
+    if (item === null) {
       //当前这项在执行的过程中被off方法移除掉了(null不能执行，执行会报错。)
       ary.splice(i, 1);
       i--;
