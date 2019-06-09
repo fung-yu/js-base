@@ -3,6 +3,11 @@ Function.prototype.myBind = function myBind(context) {
   context = context || window;
   var _this = this,
     outerArg = Array.prototype.slice.call(arguments, 1);
+
+  if ('bind' in Function.prototype) {
+    outerArg.unshift(context);
+    return _this.bind.apply(_this, outerArg);
+  }
   return function () {
     var innerArg = Array.prototype.slice.call(arguments);
     outerArg = outerArg.concat(innerArg);

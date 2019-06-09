@@ -203,7 +203,13 @@ Function.prototype.myBind = function myBind(context) {
     console.log(context, arguments, outerArg);
   
     var _this = this;
-    return function(){
+  
+    if ('bind' in Function.prototype) {
+      outerArg.unshift(context);
+      return _this.bind.apply(_this, outerArg);
+    }
+  
+    return function () {
       //=>_this: fn
       //=>arguments: 返回的匿名函数接收到的参数
       var innerArg = Array.prototype.slice.call(arguments);
