@@ -30,7 +30,8 @@ timeout/application1.js  同步异步编程应用一
 timeout/application2.js  同步异步编程应用二
 timeout/move.js  固定步长和固定时间的匀速运动动画
 
-
+domevent 
+解决DOM2中兼容出现的 顺序  重复  this问题解决了
 
 dialog/dialogpugin下是自己写的一个dialog插件
 

@@ -192,3 +192,28 @@ var utils = (function () {
         getElementsByClassName: getElementsByClassName
     }
 })()
+
+//bind兼容
+Function.prototype.myBind = function myBind(context) {
+    //this: fn(当前我们需要预先处理this的函数)
+    //context:我们需要预先改变this值，如果不传默认值为window
+    //arguments：存储包含context在内的所有的实参（只能接受自己在执行myBind时候传递的参数）
+    context = context || window;
+    var outerArg = Array.prototype.slice.call(arguments, 1);
+    console.log(context, arguments, outerArg);
+  
+    var _this = this;
+  
+    if ('bind' in Function.prototype) {
+      outerArg.unshift(context);
+      return _this.bind.apply(_this, outerArg);
+    }
+  
+    return function () {
+      //=>_this: fn
+      //=>arguments: 返回的匿名函数接收到的参数
+      var innerArg = Array.prototype.slice.call(arguments);
+      outerArg = outerArg.concat(innerArg);
+      _this.apply(context, outerArg);
+    }
+  }
