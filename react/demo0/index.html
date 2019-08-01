@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>react demo0</title>
+</head>
+<body>
+    <div class="app">
+        <input type="checkbox" class="switch">
+        <p class="text">关</p>
+        <input type="checkbox" class="switch">
+        <p class="text">关</p>
+    </div>
+    <script>
+        let btn = document.querySelector('.switch');
+        let text = document.querySelector('.text');
+        btn.addEventListener('change',function (e) {
+            text.innerHTML = e.target.checked?'开':'关';
+        }, false)
+    </script>
+    <style>
+        .switch{
+            -webkit-appearance: none;
+            width: 50px;
+            height: 32px;
+            border:solid 1px #dfdfdf;
+            border-radius: 30px;
+            position: relative;
+            outline: none;
+            transition:all 0.2s linear;
+        }
+        .switch:before{
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            box-shadow: 1px 1px 2px 0 #dfdfdf;
+            background: #FFFFFF;
+            transition:all 0.2s linear;
+        }
+        .switch:checked{
+            box-shadow: #343cff 0 0 16px 16px inset ;
+            transition:all 0.2s linear;
+        }
+        .switch:checked:before{
+            left: 20px;
+            transition:all 0.2s linear;
+        }
+    </style>
+</body>
+</html>
